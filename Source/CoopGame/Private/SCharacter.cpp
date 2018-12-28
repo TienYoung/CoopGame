@@ -6,7 +6,7 @@
 #include "GameFramework/PawnMovementComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "CoopGame.h"
-#include "SHealthComponent.h"
+#include "Components/SHealthComponent.h"
 #include "SWeapon.h"
 #include "Net/UnrealNetwork.h"
 
@@ -46,7 +46,7 @@ void ASCharacter::BeginPlay()
 
 	if (Role == ROLE_Authority)
 	{
-		// Spawn a defult weapon
+		// Spawn a default weapon
 		FActorSpawnParameters SpawnParameters;
 		SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 

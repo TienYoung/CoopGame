@@ -95,6 +95,8 @@ void ASWeapon::Fire()
 
 			UGameplayStatics::ApplyPointDamage(HitActor, ActualDamage, ShotDirection, Hit, MyOwner->GetInstigatorController(), this, DamageType);
 
+			PlayImpactEffects(SurfaceType, Hit.ImpactPoint);
+
 			TracerEndPoint = Hit.ImpactPoint;
 		}
 
@@ -172,7 +174,7 @@ void ASWeapon::PlayFireEffects(FVector TraceEnd)
 	}
 }
 
-void ASWeapon::PlayImpactEffects(EPhysicalSurface SurfaceType,FVector ImpactPoint)
+void ASWeapon::PlayImpactEffects(EPhysicalSurface SurfaceType, FVector ImpactPoint)
 {
 	UParticleSystem* SelectedEffect = nullptr;
 
