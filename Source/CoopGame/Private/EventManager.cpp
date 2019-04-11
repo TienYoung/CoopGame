@@ -60,7 +60,7 @@ FString UEventManager::DispatchEvent(FString EventName, UObject* Datas)
 		}
 		else
 		{
-			obj->ProcessEvent(fun, Datas);
+			obj->ProcessEvent(fun, &Datas);
 		}
 	}
 

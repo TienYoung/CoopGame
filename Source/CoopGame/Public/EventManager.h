@@ -18,10 +18,14 @@ private:
 	static TMap<FString, TArray<UObject*>> AllListener;
 
 public:
+
+	UFUNCTION(BlueprintCallable, Category = "EventDispatchUtility")
 	static void AddEventListener(FString EventName, UObject* Listener);
 
+	UFUNCTION(BlueprintCallable, Category = "EventDispatchUtility")
 	static void RemoveEventListener(FString EventName, UObject* Listener);
 
+	UFUNCTION(BlueprintCallable, Category = "EventDispatchUtility")
 	static FString DispatchEvent(FString EventName, UObject* Datas);
 
 	UFUNCTION(BlueprintCallable, Category="EventDispatchUtility")
