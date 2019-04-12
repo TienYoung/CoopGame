@@ -53,7 +53,11 @@ void ASTrackerBot::BeginPlay()
 	{
 		// Find initial move-to
 		NextPathPoint = GetNextPathPoint();
+
+		FTimerHandle TimerHandle_CheckPowerLevel;
+		GetWorldTimerManager().SetTimer(TimerHandle_CheckPowerLevel, this, &ASTrackerBot::OnCheckNearbyBots, 1.0f, true, 0.0f);
 	}
+
 }
 
 
@@ -120,8 +124,10 @@ void ASTrackerBot::SelfDestruct()
 		TArray<AActor*> IgnoredActors;
 		IgnoredActors.Add(this);
 
+		float ActualDamage = ExplosionDamages + (ExplosionDamages*PowerLevel);
+
 		// Apply Damage!
-		UGameplayStatics::ApplyRadialDamage(this, ExplosionDamages, GetActorLocation(), ExplosionRadius, nullptr, IgnoredActors, this, GetInstigatorController(), true);
+		UGameplayStatics::ApplyRadialDamage(this, ActualDamage, GetActorLocation(), ExplosionRadius, nullptr, IgnoredActors, this, GetInstigatorController(), true);
 
 		DrawDebugSphere(GetWorld(), GetActorLocation(), ExplosionRadius, 12, FColor::Red, false, 2.0f, 0, 1.0f);
 
@@ -133,6 +139,54 @@ void ASTrackerBot::SelfDestruct()
 void ASTrackerBot::DamageSelf()
 {
 	UGameplayStatics::ApplyDamage(this, 20, GetInstigatorController(), this, nullptr);
+}
+
+void ASTrackerBot::OnCheckNearbyBots()
+{
+	const float Radius = 600;
+
+	FCollisionShape CollShape;
+	CollShape.SetSphere(Radius);
+
+	FCollisionObjectQueryParams QueryParams;
+
+	QueryParams.AddObjectTypesToQuery(ECC_PhysicsBody);
+	QueryParams.AddObjectTypesToQuery(ECC_Pawn);
+
+	TArray<FOverlapResult> Overlaps;
+	GetWorld()->OverlapMultiByObjectType(Overlaps, GetActorLocation(), FQuat::Identity, QueryParams, CollShape);
+ 
+	DrawDebugSphere(GetWorld(), GetActorLocation(), Radius, 12, FColor::White, false, 1.0f);
+	
+	int32 NrOfBots = 0;
+
+	for (FOverlapResult Result : Overlaps)
+	{
+		ASTrackerBot* Bot = Cast<ASTrackerBot>(Result.GetActor());
+
+		if (Bot && Bot != this)
+		{
+			NrOfBots++;
+		}
+	}
+
+	const int32 MaxPowerLevel = 4;
+
+	PowerLevel = FMath::Clamp(NrOfBots, 0, MaxPowerLevel);
+
+	if (MatInst == nullptr)
+	{
+		MatInst = MeshComp->CreateAndSetMaterialInstanceDynamicFromMaterial(0, MeshComp->GetMaterial(0));
+	}
+
+	if (MatInst)
+	{
+		float Alpha = PowerLevel / (float)MaxPowerLevel;
+
+		MatInst->SetScalarParameterValue("PowerLevelAlpha", Alpha);
+	}
+
+	DrawDebugString(GetWorld(), FVector(0, 0, 0), FString::FromInt(PowerLevel), this, FColor::White, 1.0f, true);
 }
 
 // Called every frame
