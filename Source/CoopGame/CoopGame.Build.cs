@@ -6,7 +6,9 @@ public class CoopGame : ModuleRules
 {
 	public CoopGame(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+        PrivatePCHHeaderFile = "CoopGame.h";
+
+        PCHUsage = PCHUsageMode.UseSharedPCHs;
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "NavigationSystem" });
 
