@@ -6,6 +6,12 @@
 #include "GameFramework/GameModeBase.h"
 #include "SGameMode.generated.h"
 
+
+enum class EWaveState : uint8;
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnActorKilled, AActor*, VictimActor, AActor*, KillerActor, AController*, KillerController);
+
+
 /**
  * 
  */
@@ -25,7 +31,7 @@ protected:
 	int32 WaveCount;
 
 	UPROPERTY(EditDefaultsOnly,Category = "GameMode")
-	float TimeBetweenWavs;
+	float TimeBetweenWaves;
 	
 protected:
 
@@ -46,6 +52,12 @@ protected:
 
 	void CheckWaveState();
 
+	void CheckAnyPlayerAlive();
+
+	void GameOver();
+
+	void SetWaveState(EWaveState NewState);
+
 public:
 	
 	ASGameMode();
@@ -54,4 +66,6 @@ public:
 
 	virtual void Tick(float DeltaSeconds) override;
 
+	UPROPERTY(BlueprintAssignable, Category = "GameMode")
+	FOnActorKilled OnActorKilled;
 };
