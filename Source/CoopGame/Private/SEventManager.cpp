@@ -1,11 +1,11 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
-#include "EventManager.h"
+#include "SEventManager.h"
 #include "Engine.h"
 
-TMap<FString, TArray<UObject*>> UEventManager::AllListener;
+TMap<FString, TArray<UObject*>> USEventManager::AllListener;
 
-void UEventManager::AddEventListener(FString EventName, UObject* Listener)
+void USEventManager::AddEventListener(FString EventName, UObject* Listener)
 {
 	if (EventName == "" || Listener == nullptr)
 	{
@@ -26,7 +26,7 @@ void UEventManager::AddEventListener(FString EventName, UObject* Listener)
 	}
 }
 
-void UEventManager::RemoveEventListener(FString EventName, UObject* Listener)
+void USEventManager::RemoveEventListener(FString EventName, UObject* Listener)
 {
 	TArray<UObject*>* arr = AllListener.Find(EventName);
 	
@@ -38,7 +38,7 @@ void UEventManager::RemoveEventListener(FString EventName, UObject* Listener)
 	}
 }
 
-FString UEventManager::DispatchEvent(FString EventName, UObject* Datas)
+FString USEventManager::DispatchEvent(FString EventName, UObject* Datas)
 {
 	TArray<UObject*>* arr = AllListener.Find(EventName);
 
@@ -67,7 +67,7 @@ FString UEventManager::DispatchEvent(FString EventName, UObject* Datas)
 	return errorInfo;
 }
 
-UObject* UEventManager::NewAsset(UClass* ClassType)
+UObject* USEventManager::NewAsset(UClass* ClassType)
 {
 	UObject* obj = NewObject<UObject>(GetTransientPackage(), ClassType);
 	obj->AddToRoot();

@@ -4,11 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "EventInterface.generated.h"
+#include "SEventInterface.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
-class UEventInterface : public UInterface
+class USEventInterface : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -16,7 +16,7 @@ class UEventInterface : public UInterface
 /**
  * 
  */
-class COOPGAME_API IEventInterface
+class COOPGAME_API ISEventInterface
 {
 	GENERATED_BODY()
 

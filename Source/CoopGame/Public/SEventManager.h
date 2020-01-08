@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "EventManager.generated.h"
+#include "SEventManager.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class COOPGAME_API UEventManager : public UBlueprintFunctionLibrary
+class COOPGAME_API USEventManager : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 	
