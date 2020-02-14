@@ -91,4 +91,7 @@ protected:
 
 	int32 PowerLevel;
 
+	FTimerHandle TimerHandle_RefreshPath;
+
+	void RefreshPath();
 };
