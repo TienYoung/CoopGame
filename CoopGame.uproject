@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.24",
+	"EngineAssociation": "4.25",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -11,6 +11,20 @@
 			"AdditionalDependencies": [
 				"Engine"
 			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "Niagara",
+			"Enabled": true
+		},
+		{
+			"Name": "NiagaraExtras",
+			"Enabled": true
+		},
+		{
+			"Name": "HoudiniEngine",
+			"Enabled": true
 		}
 	]
 }
