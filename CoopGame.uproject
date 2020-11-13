@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.25",
+	"EngineAssociation": "4.26",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -23,7 +23,7 @@
 			"Enabled": true
 		},
 		{
-			"Name": "HoudiniEngine",
+			"Name": "GPULightmass",
 			"Enabled": true
 		}
 	]
