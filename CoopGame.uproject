@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "4.26",
+	"EngineAssociation": "5.0",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -15,16 +15,13 @@
 	],
 	"Plugins": [
 		{
-			"Name": "Niagara",
-			"Enabled": true
-		},
-		{
-			"Name": "NiagaraExtras",
-			"Enabled": true
-		},
-		{
-			"Name": "GPULightmass",
-			"Enabled": true
+			"Name": "Bridge",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Mac",
+				"Linux"
+			]
 		}
 	]
 }
