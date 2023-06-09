@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
-#include "SExplosiveBarrel.h"
-#include "SHealthComponent.h"
+#include "Challenges/SExplosiveBarrel.h"
+#include "Components/SHealthComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "PhysicsEngine/RadialForceComponent.h"
 #include "Net/UnrealNetwork.h"

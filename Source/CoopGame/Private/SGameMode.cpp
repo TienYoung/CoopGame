@@ -2,7 +2,7 @@
 
 
 #include "SGameMode.h"
-#include "SHealthComponent.h"
+#include "Components/SHealthComponent.h"
 #include "SGameState.h"
 #include "SPlayerState.h"
 #include "EngineUtils.h"

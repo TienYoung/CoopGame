@@ -7,7 +7,7 @@
 #include "NavigationPath.h"
 #include "GameFramework/Character.h"
 #include "DrawDebugHelpers.h"
-#include "SHealthComponent.h"
+#include "Components/SHealthComponent.h"
 #include "SCharacter.h"
 #include "Components/SphereComponent.h"
 #include "Sound/SoundCue.h"
@@ -149,6 +149,7 @@ void ASTrackerBot::SelfDestruct()
 	UGameplayStatics::PlaySoundAtLocation(this, ExplodeSound, GetActorLocation());
 
 	MeshComp->SetVisibility(false, true);
+	MeshComp->SetSimulatePhysics(false);
 	MeshComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	if (GetLocalRole() == ROLE_Authority)

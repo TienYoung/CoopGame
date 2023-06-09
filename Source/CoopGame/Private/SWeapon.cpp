@@ -7,7 +7,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "PhysicalMaterials/PhysicalMaterial.h"
-#include "CoopGame.h"
+#include "CoopGame/CoopGame.h"
 #include "TimerManager.h"
 #include "Net/UnrealNetwork.h"
 

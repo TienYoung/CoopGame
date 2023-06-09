@@ -2,6 +2,7 @@
 
 using UnrealBuildTool;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 public class CoopGameEditorTarget : TargetRules
 {
@@ -10,5 +11,7 @@ public class CoopGameEditorTarget : TargetRules
 		Type = TargetType.Editor;
 
 		ExtraModuleNames.AddRange( new string[] { "CoopGame" } );
+		DefaultBuildSettings = BuildSettingsVersion.V2;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 	}
 }
