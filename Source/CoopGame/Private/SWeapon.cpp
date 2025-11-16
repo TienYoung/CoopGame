@@ -35,8 +35,8 @@ ASWeapon::ASWeapon()
 
 	SetReplicates(true);
 
-	NetUpdateFrequency = 66.0f;
-	MinNetUpdateFrequency = 33.0f;
+	SetNetUpdateFrequency(66.0f);
+	SetMinNetUpdateFrequency(33.0f);
 }
 
 

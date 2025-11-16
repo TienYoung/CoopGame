@@ -12,6 +12,7 @@
 #include "Components/SphereComponent.h"
 #include "Sound/SoundCue.h"
 #include "EngineUtils.h"
+#include "Engine/OverlapResult.h"
 
 static int32 DebugTrackerBotDrawing = 0;
 FAutoConsoleVariableRef CVARDebugTrackerBotDrawing(
